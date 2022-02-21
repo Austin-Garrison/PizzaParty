@@ -26,6 +26,17 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    /**
+     * calculateClick determines how many pizzas are needed using the equation below
+     *
+     * @author zyBooks, Austin Garrison
+     *
+     * @param numAttendStr is the number of people attending as a String
+     * @param numAttend is the number of people attending as an int
+     * @param slicesPerPerson is the number of slices based on level of hunger chosen
+     * @param totalPizzas is the number of pizzas needed based on the calculation
+     *
+     */
     fun calculateClick(view: View) {
         val numAttendStr = numAttendEditText.text.toString()
         val numAttend = numAttendStr.toInt()
