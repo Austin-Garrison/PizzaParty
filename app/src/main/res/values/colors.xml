@@ -7,4 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- (2) added new color for primary color change -->
+    <color name="my_blue">#0096FF</color>
 </resources>

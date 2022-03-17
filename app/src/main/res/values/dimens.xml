@@ -1,0 +1,4 @@
+<!-- (3) File uses for dimension resources -->
+<resources>
+    <dimen name="label_text_size">24sp</dimen>
+</resources>
