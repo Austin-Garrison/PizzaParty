@@ -1,29 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <!-- (4) Added background image below -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/pizza_background"
-    android:orientation="vertical"
-    android:paddingLeft="16dp"
-    android:paddingTop="16dp"
-    android:paddingRight="16dp"
 
-    android:paddingBottom="16dp"
     tools:context="com.zybooks.pizzaparty.MainActivity">
 
     <!-- (3) Added dimension resources below -->
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="32dp"
         android:labelFor="@id/num_attend_edit_text"
-
         android:text="@string/number_of_people"
-        android:textSize="@dimen/label_text_size" />
+        android:textSize="@dimen/label_text_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <!--(6) Used constraint layout based on number of people text -->
     <EditText
         android:id="@+id/num_attend_edit_text"
         android:layout_width="wrap_content"
@@ -32,41 +35,49 @@
         android:hint="@string/_10"
         android:importantForAutofill="no"
         android:inputType="number"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:labelFor="@id/hungry_radio_group"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="21dp"
+        
         android:text="@string/how_hungry"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/num_attend_edit_text" />
 
-    <RadioGroup
-        android:id="@+id/hungry_radio_group"
-        android:layout_width="fill_parent"
+
+    <RadioButton
+        android:id="@+id/light_radio_button"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:text="@string/light"
+        app:layout_constraintBaseline_toBaselineOf="@+id/medium_radio_button"
+        app:layout_constraintStart_toStartOf="@+id/textView2" />
 
-        <RadioButton
-            android:id="@+id/light_radio_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/light" />
+    <RadioButton
+        android:id="@+id/medium_radio_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="@string/medium"
+        app:layout_constraintStart_toEndOf="@+id/light_radio_button"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-        <RadioButton
-            android:id="@+id/medium_radio_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="@string/medium" />
+    <RadioButton
+        android:id="@+id/ravenous_radio_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ravenous"
+        app:layout_constraintBaseline_toBaselineOf="@+id/medium_radio_button"
+        app:layout_constraintStart_toEndOf="@+id/medium_radio_button" />
 
-        <RadioButton
-            android:id="@+id/ravenous_radio_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/ravenous" />
-    </RadioGroup>
 
     <TextView
         android:id="@+id/num_pizzas_text_view"
@@ -75,13 +86,18 @@
         android:layout_marginTop="20dp"
         android:text="@string/total_pizzas"
         android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/light_radio_button"
+        app:layout_constraintTop_toBottomOf="@+id/light_radio_button" />
 
     <Button
         android:id="@+id/calc_button"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="21dp"
         android:onClick="calculateClick"
-        android:text="@string/calculate" />
-</LinearLayout>
+        android:text="@string/calculate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/num_pizzas_text_view"
+        app:layout_constraintTop_toBottomOf="@+id/num_pizzas_text_view" />
+</androidx.constraintlayout.widget.ConstraintLayout>
